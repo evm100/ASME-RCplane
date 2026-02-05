@@ -73,21 +73,22 @@ fig, axes = plt.subplots(1, 3, figsize=(16, 5))
 
 # Std PM
 axes[0].bar(std_labels, std_avg, color=["b", "g", "r"])
-axes[0].set_title("PM Standard (10 s avg)")
+axes[0].set_title("PM Standard ("+ DURATION + " s avg)")
 axes[0].set_ylabel("µg/m³")
 axes[0].set_ylim(bottom=0)
 
 # Atm PM
 axes[1].bar(atm_labels, atm_avg, color=["b", "g", "r"])
-axes[1].set_title("PM Atmospheric (10 s avg)")
+axes[1].set_title("PM Atmospheric ("+ DURATION + " s avg)")
 axes[1].set_ylabel("µg/m³")
 axes[1].set_ylim(bottom=0)
 
 # Particle counts
 axes[2].bar(count_labels, count_avg, color="purple")
-axes[2].set_title("Particle Counts (10 s avg)")
+axes[2].set_title("Particle Counts ("+ DURATION + " s avg)")
 axes[2].set_ylabel("counts / 0.1 L")
 axes[2].set_ylim(bottom=0)
 
 plt.tight_layout()
 plt.show()
+
