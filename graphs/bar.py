@@ -5,7 +5,7 @@ import time
 # ------------------- CONFIG -------------------
 PORT = "COM3"
 BAUD = 115200
-DURATION = 10  # seconds
+DURATION = 20  # seconds
 
 std_labels = ["PM1.0", "PM2.5", "PM10"]
 atm_labels = ["PM1.0", "PM2.5", "PM10"]
@@ -68,28 +68,31 @@ std_avg   = [avg(x) for x in pm_std]
 atm_avg   = [avg(x) for x in pm_atm]
 count_avg = [avg(x) for x in counts]
 
+# ------------------- COLORS -------------------
+std_colors   = ["#a6cee3", "#b2df8a", "#fb9a99"]  # light blue, light green, light red
+atm_colors   = ["#a6cee3", "#b2df8a", "#fb9a99"]  # same pastel for consistency
+count_colors = ["#bae4f0", "#ffd966", "#fdbf6f", "#cab2d6", "#e5c494", "#fbb4ae"]
+
 # ------------------- PLOTTING -------------------
 fig, axes = plt.subplots(1, 3, figsize=(16, 5))
 
 # Std PM
-axes[0].bar(std_labels, std_avg, color=["b", "g", "r"])
-axes[0].set_title("PM Standard ("+ str(DURATION) + " s avg)")
+axes[0].bar(std_labels, std_avg, color=std_colors)
+axes[0].set_title(f"PM Standard ({DURATION} s avg)")
 axes[0].set_ylabel("µg/m³")
 axes[0].set_ylim(bottom=0)
 
 # Atm PM
-axes[1].bar(atm_labels, atm_avg, color=["b", "g", "r"])
-axes[1].set_title("PM Atmospheric ("+ str(DURATION) + " s avg)")
+axes[1].bar(atm_labels, atm_avg, color=atm_colors)
+axes[1].set_title(f"PM Atmospheric ({DURATION} s avg)")
 axes[1].set_ylabel("µg/m³")
 axes[1].set_ylim(bottom=0)
 
 # Particle counts
-axes[2].bar(count_labels, count_avg, color="purple")
-axes[2].set_title("Particle Counts ("+ str(DURATION) + " s avg)")
+axes[2].bar(count_labels, count_avg, color=count_colors)
+axes[2].set_title(f"Particle Counts ({DURATION} s avg)")
 axes[2].set_ylabel("counts / 0.1 L")
 axes[2].set_ylim(bottom=0)
 
 plt.tight_layout()
 plt.show()
-
-
