@@ -110,7 +110,7 @@ while True:
             ax.relim()
             ax.autoscale_view(scalex=False, scaley=True)
 
-        plt.pause(0.01)
+        plt.pause(0.1)
 
     except KeyboardInterrupt:
         print("Exiting...")
